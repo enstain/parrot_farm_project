@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @parrot.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @parrot.age %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @parrot.sex %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @parrot.color %>
+</p>
+
+<p>
+  <strong>Brood:</strong>
+  <%= @parrot.brood %>
+</p>
+
+<p>
+  Can make pair with
+  <ul>
+    <% for pair in @parrot.can_make_pair_with %>
+      <li><%= pair.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  Descendants
+  <ul>
+    <% for child in @parrot.descendants %>
+      <li><%= child.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  Ancestry
+  <ul>
+    <% for parent in @parrot.ancestry %>
+      <li><%= parent.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+<%= link_to 'Edit', edit_parrot_path(@parrot) %> |
+<%= link_to 'Back', parrots_path %>

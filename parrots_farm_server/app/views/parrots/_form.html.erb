@@ -1,0 +1,46 @@
+<%= form_for(@parrot) do |f| %>
+  <% if @parrot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parrot.errors.count, "error") %> prohibited this parrot from being saved:</h2>
+
+      <ul>
+      <% @parrot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select :mother, Parrot.candidates_to_parent("female"), :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select :father, Parrot.candidates_to_parent("male"), :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.text_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br>
+    <%= f.text_field :sex %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :brood %><br>
+    <%= f.text_field :brood %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

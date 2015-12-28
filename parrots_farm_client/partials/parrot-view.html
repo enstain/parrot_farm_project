@@ -1,0 +1,52 @@
+<table class="table parrottable">
+  <tr>
+    <td><h3>Details for {{parrot.name}}</h3></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Parrot Name</td>
+    <td>{{parrot.name}}</td>
+  </tr>
+  <tr ng-if="mother">
+    <td>Parrot Mother</td>
+    <td><a ui-sref="viewParrot({id:mother.id})">{{mother.name}}</a></td>
+  </tr>
+  <tr ng-if="father">
+    <td>Parrot Father</td>
+    <td><a ui-sref="viewParrot({id:father.id})">{{father.name}}</a></td>
+  </tr>
+  <tr>
+    <td>Parrot Age</td>
+    <td>{{parrot.age}}</td>
+  </tr>
+  <tr>
+    <td>Parrot Sex</td>
+    <td>{{parrot.sex}}</td>
+  </tr>
+  <tr>
+    <td>Parrot Color</td>
+    <td>{{parrot.color}}</td>
+  </tr>
+  <tr>
+    <td>Parrot Brood</td>
+    <td>{{parrot.brood}}</td>
+  </tr>
+</table>
+
+<div class="well" ng-if="descendants.length > 0">
+  <h3>Descendants</h3>
+  <ul>
+    <li ng-repeat="parrot in descendants"><a ui-sref="viewParrot({id: parrot.id})">{{parrot.name}}</a></li>
+  </ul>
+</div>
+
+<div class="well" ng-if="ancestry.length > 0">
+  <h3>Ancestry</h3>
+  <ul>
+    <li ng-repeat="parrot in ancestry"><a ui-sref="viewParrot({id: parrot.id})">{{parrot.name}}</a></li>
+  </ul>
+</div>
+
+<div>
+  <a class="btn btn-primary" ui-sref="editParrot({id:parrot.id})">Edit</a>
+</div>

@@ -1,0 +1,18 @@
+source 'https://rubygems.org'
+
+gem 'rails', '4.2.0'
+gem 'therubyracer', platforms: :ruby
+gem 'jbuilder', '~> 2.0'
+
+# DB
+gem 'mongoid'
+gem 'enumerize'
+gem 'kaminari'
+
+# CORS
+gem 'rack-cors', :require => 'rack/cors'
+
+# SERVER
+gem 'unicorn'
+
+

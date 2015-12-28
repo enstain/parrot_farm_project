@@ -1,0 +1,74 @@
+<div class="form-group">
+  <label for="name" class="col-sm-2 control-label">Name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="parrot.name" class="form-control" id="name" placeholder="Parrot name (can leave empty)"/>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="mother" class="col-sm-2 control-label">Mother</label>
+  <div class="col-sm-10">
+    <select name="mother" id="mother" ng-model="parrot.mother_id" class="form-control">
+      <option value="nil">No mother</option>
+      <option ng-repeat="mother in mothers" value="{{mother.id}}">{{mother.name}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="father" class="col-sm-2 control-label">Father</label>
+  <div class="col-sm-10">
+    <select name="father" id="father" ng-model="parrot.father_id" class="form-control">
+      <option value="nil">No father</option>
+      <option ng-repeat="father in fathers" value="{{father.id}}">{{father.name}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="age" class="col-sm-2 control-label">Age</label>
+  <div class="col-sm-10">
+    <input type="number" ng-model="parrot.age" class="form-control" id="age" min="0"/>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="sex" class="col-sm-2 control-label">Sex</label>
+  <div class="col-sm-10">
+    <select name="sex" id="sex" ng-model="parrot.sex" class="form-control">
+      <option ng-repeat="sex in sex_values" value="{{sex.value}}">{{sex.value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="color" class="col-sm-2 control-label">Color</label>
+  <div class="col-sm-10">
+    <select name="color" id="color" ng-model="parrot.color" class="form-control">
+      <option ng-repeat="color in colors" value="{{color.value}}">{{color.value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="brood" class="col-sm-2 control-label">Brood</label>
+  <div class="col-sm-10">
+    <input type="checkbox" name="brood" ng-model="parrot.brood" ng-value="true">
+  </div>
+</div>
+
+<div class="form-group" ng-show="errors.length > 0">
+  <div class="col-sm-offset-2 col-sm-10 alert alert-danger">
+    <h5>Can't process action because:</h5>
+    <ul>
+      <li ng-repeat="error in errors">{{error}}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <input type="submit" class="btn btn-primary" value="Save"/>
+    <a ui-sref="viewParrot({id:parrot.id})" class="btn btn-default">Cancel</a>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<h3>All Parrots <small><a ui-sref="newParrot" class="btn-primary btn-lg nodecoration">Add New Parrot</a></small></h3>
+
+<div class="well filter_form">
+  <div class="row">
+    <div class="col-sm-8">
+      <select class="form-control" name="newFilter" ng-model="newFilter">
+        <option value="">Select Filter</option>
+        <option ng-repeat="(key, value) in search_keys" value="{{key}}">{{value.label}}</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-primary" ng-click="addFilter()">Add Filter</button>  
+    </div>
+  </div>
+    
+  <div class="row" ng-repeat="(key, value) in search">
+    <hr>
+    <div class="col-sm-10 form-inline">
+      <label for="{{key}}">
+        {{search_keys[key].label}}  
+      </label>
+      <input ng-if="search_keys[key].type != 'select'" class="form-control" type="{{search_keys[key].type}}" name="{{key}}" ng-model="search[key]" value="{{value}}">  
+      <select ng-if="search_keys[key].type == 'select'" class="form-control" name="{{key}}" ng-model="search[key]">
+        <option ng-repeat="item in search_keys[key].source" value="{{item.value}}">{{item.value}}</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-danger" ng-click="removeFilter(key)">Remove</button>
+    </div>
+  </div>
+  <hr>
+  <a ng-click="applyFilters()" class="btn btn-warning">Apply Filters</a>
+</div>
+
+<table class="table parrottable">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Sex</th>
+    <th>Color</th>
+    <th>Brood</th>
+    <th>Actions</th>
+  </tr>
+  <tr ng-repeat="parrot in parrots">
+    <td>{{parrot.name}}</td>
+    <td>{{parrot.age}}</td>
+    <td>{{parrot.sex}}</td>
+    <td>{{parrot.color}}</td>
+    <td>{{parrot.brood}}</td>
+    <td>
+      <a class="btn btn-primary" ui-sref="viewParrot({id:parrot.id})">View</a>
+      <a class="btn btn-success" ui-sref="editParrot({id:parrot.id})">Edit</a>
+      <a class="btn btn-danger" ng-click="deleteParrot(parrot)">Delete</a>
+    </td>
+  </tr>
+</table>

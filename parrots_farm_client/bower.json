@@ -1,0 +1,19 @@
+{
+  "name": "parrots_farm_client",
+  "authors": [
+    "Andrew <block159@gmail.com>"
+  ],
+  "description": "client of parrots farm",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "enstain.pro",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Parrots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mother</th>
+      <th>Father</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Color</th>
+      <th>Brood</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parrots.each do |parrot| %>
+      <tr>
+        <td><%= parrot.name %></td>
+        <td><%= parrot.mother.name if parrot.mother %></td>
+        <td><%= parrot.father.name if parrot.father %></td>
+        <td><%= parrot.age %></td>
+        <td><%= parrot.sex %></td>
+        <td><%= parrot.color %></td>
+        <td><%= parrot.brood %></td>
+        <td><%= link_to 'Show', parrot %></td>
+        <td><%= link_to 'Edit', edit_parrot_path(parrot) %></td>
+        <td><%= link_to 'Destroy', parrot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parrot', new_parrot_path %>
